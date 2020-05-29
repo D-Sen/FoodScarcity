@@ -1,0 +1,97 @@
+Programmer Name: Domonic Senesi
+Date: 04/18/2020
+Overview: Notification Log displays a list or 'log' of all the notifications created by the employees involved in the
+ Food Scarcity program. Notification Log is a Java program accesses the Notification SQL database and assists the user
+ in returning results depending on several filtering standards.
+
+Functions:
+
+
+>>>>Location: Notification.java
+
+    setSDate, setEDate: set the start date and end date which will be used to filter notifications
+        Inputs: String N
+        Outputs: None
+
+    getSDate, getEDate: return the start date and end date which will be used to filter notifications
+        Inputs: None
+        Outputs: String N
+
+    findNotifications: Simple "findNotifications" function caller to the database.java class to preserve N-Tier
+            Inputs: String eDate, String sDate
+            Outputs: ArrayList notifications
+
+    setSearchString, getSearchString: set and get the search string the user may have entered in the textbox
+        Inputs: (setSearchString) String N
+        Outputs: (getSearchString) String
+
+    setSearchColumn, getSearchColumn: sets/gets  the search column chosen by the ComboBox. 'Get' uses a special
+            Int parser.
+        Inputs: (setSearchColumn) String N
+        Outputs: (getSearchColumn) String
+
+
+>>>>Location: Database.java
+
+
+    getQuery: Returns the main base query that will be used to search the database.
+       Inputs: Integer i
+       Outputs: String
+
+    connect: Uses the network connection information and passes the credentials to connect to the database.
+        Inputs: None
+        Outputs: None
+
+    findNotifications: Creates an array list of notification class instances based from the Notification table.
+        Inputs: String eDate, String sDate
+        Outputs: ArrayList notifications
+
+
+>>>>Location: NotificationLog
+
+    Search.AddActionListener: Listens for the "Search" button being pressed. Then displays records from the NOTIFICATION table.
+        Input: Start Date, End Date (Both selected from their separate calendar panels, or as text directly)
+            Search Column, Search String
+        Output: None
+
+    notificationTable.addMouseListener: Listens for a row in the table being selected via mouse click, then displays a dialog with the title and
+            message text with an "OK" button.
+         Input: Selected row in the shown table (Title & Message strings)
+         Output: None
+
+    DisplayNotifications: Creates an array called 'notifications', then grabs the data from each of the notifications classes'
+            fields to fill in each element of that array.
+         Inputs: None
+         Outputs: None
+
+    createTable: Creates an fills the header information for the displayed java swing table in the GUI.
+        Inputs: None
+        Outputs: None
+
+
+
+
+Classes:
+ Notification - a class that stores the data for a single record in the Notification table.
+ Inputs:
+  getNotificationId(),getUserId(),getTemplateId(),getTitle(),getMessage(),getDate(),getCount(),getTarget()
+ Outputs:
+  findNotifications
+ Files it appears in:
+  Notification.java
+
+ Database - a class that stores the data for the database interaction(s).
+ Inputs:
+  setEDate(String), setSDate(String)
+ Outputs:
+  findNotifications
+ Files it appears in:
+  Notification.java
+
+ NotificationLog - a class that displays the data pulled from the database and synthesized in the Notification class.
+  Inputs:
+   setEDate(String), setSDate(String)
+  Outputs:
+   getRootPanel, NotificationLog
+  Files it appears in:
+   NotificationLog.java
