@@ -15,9 +15,9 @@ import static java.lang.System.exit;
 
 public class Database {
     static public Connection connection = null;
-    private static String CONN_STRING = "jdbc:jtds:sqlserver://cisdbss.pcc.edu";
-    private static String USERNAME = "234a_Cornucopia";
-    private static String PASSWORD = "!@#_234a_Cornucopia_Spr2020";
+    private static String CONN_STRING = "REMOVED";
+    private static String USERNAME = "REMOVED";
+    private static String PASSWORD = "REMOVED";
 
     private static String SEARCH_SQL;
 
